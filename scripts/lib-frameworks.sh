@@ -108,10 +108,10 @@ function build_libraries() {
         fi
 
         echo "Assembling .dylib and .a for $PLATFORM $SDKVERSION ($ARCH)"
-
+        local SDK_NAME=`echo "${_platform}" | tr '[:upper:]' '[:lower:]'`
         CROSS_TOP="${DEVELOPER}/Platforms/${_platform}.platform/Developer"
         CROSS_SDK="${_platform}${SDKVERSION}.sdk"
-        SDK="${CROSS_TOP}/SDKs/${CROSS_SDK}"
+        SDK=`xcrun -sdk $SDK_NAME --show-sdk-path`
 
         if [[ $PLATFORM == AppleTVSimulator* ]]; then
             MIN_SDK="-tvos_simulator_version_min $TVOS_MIN_SDK_VERSION"

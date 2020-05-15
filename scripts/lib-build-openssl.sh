@@ -225,9 +225,11 @@ target_build_loop()
       ARCH=$(echo "${TARGET}" | sed -E 's|^.*\-([^\-]+)$|\1|g')
 
       # Cross compile references, see Configurations/10-main.conf
+      local SDK_NAME=`echo "${PLATFORM}" | tr '[:upper:]' '[:lower:]'`
       export CROSS_COMPILE="${DEVELOPER}/Toolchains/XcodeDefault.xctoolchain/usr/bin/"
       export CROSS_TOP="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer"
       export CROSS_SDK="${PLATFORM}${SDKVERSION}.sdk"
+      export CROSS_SYSROOT=`xcrun -sdk $SDK_NAME --show-sdk-path`
 
       # Prepare TARGETDIR and SOURCEDIR
       SUBPLATFORM="${PLATFORM}"
