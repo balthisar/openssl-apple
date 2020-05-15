@@ -64,7 +64,7 @@ SCRIPTDIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 #—————————————————————————————————————————————————————————————————————————————————————————
 
 # Default version in case no version is specified.
-DEFAULTVERSION="1.1.1d"
+DEFAULTVERSION="1.1.1g"
 
 # Available set of targets to build. This is distinct from the default set, below, in that this
 # reflects everything that's available to build, whereas you may want to choose a different set
