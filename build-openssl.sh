@@ -69,7 +69,7 @@ DEFAULTVERSION="1.1.1d"
 # Available set of targets to build. This is distinct from the default set, below, in that this
 # reflects everything that's available to build, whereas you may want to choose a different set
 # of defaults.
-TARGETS_AVAILABLE="ios-sim-cross-x86_64 ios-cross-armv7 ios64-cross-arm64 mac-catalyst-x86_64 tvos-sim-cross-x86_64 tvos64-cross-arm64 macos64-x86_64 watchos-cross-armv7k watchos-cross-arm64_32 watchos-sim-cross-i386"
+TARGETS_AVAILABLE="ios-sim-cross-x86_64 ios-cross-armv7 ios64-cross-arm64 mac-catalyst-x86_64 tvos-sim-cross-x86_64 tvos64-cross-arm64 macos64-x86_64 macos64-arm64 watchos-cross-armv7k watchos-cross-arm64_32 watchos-sim-cross-i386"
 
 # Default set of architectures (OpenSSL <= 1.0.2) or targets (OpenSSL >= 1.1.1) to build
 TARGETS_DEFAULT="$TARGETS_AVAILABLE"
@@ -447,6 +447,9 @@ if [ ${#OPENSSLCONF_ALL[@]} -gt 1 ]; then
     case "${OPENSSLCONF_CURRENT}" in
       *_macos_x86_64.h)
         DEFINE_CONDITION="TARGET_OS_OSX && TARGET_CPU_X86_64"
+      ;;
+      *_macos_arm64.h)
+        DEFINE_CONDITION="TARGET_OS_OSX && TARGET_CPU_ARM64"
       ;;
       *_macos_i386.h)
         DEFINE_CONDITION="TARGET_OS_OSX && TARGET_CPU_X86"
